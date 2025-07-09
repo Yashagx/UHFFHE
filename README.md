@@ -63,23 +63,11 @@ a student at SRMIST and a volunteer mentor at United Forum.
 
 ---
 
-## 🤝 How to Contribute
 
-We welcome community collaboration!  
-Feel free to improve the website, add accessibility features, or help us scale its impact.
-
-### 🔧 Steps:
-1. **Fork** this repository
-2. Create your feature branch → `git checkout -b feature-name`
-3. Make changes and commit → `git commit -m "Your message"`
-4. Push changes → `git push origin feature-name`
-5. Open a **Pull Request**
-
----
 
 ## 📬 Contact & Links
 
-📧 Email: unitedforum.ngo@gmail.com  
+
 🌐 Website: [studentsofuhffhe.vercel.app](https://studentsofuhffhe.vercel.app/)  
 📍 Location: Chennai, Tamil Nadu, India
 
@@ -97,12 +85,6 @@ Feel free to improve the website, add accessibility features, or help us scale i
 Volunteer Educator & Tech Mentor  
 B.Tech Software Engineering, SRMIST
 
----
-
-## 📄 License
-
-This repository is open-sourced under the **MIT License**.  
-You are free to use, modify, and distribute it for non-commercial and educational purposes.
 
 ---
 
