@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Minds in Action - UFHE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crayon-blue: #7AB6F8;
+            --sunshine-yellow: #FFE57F;
+            --chalkboard-green: #6EBF75;
+            --light-coral: #FFA6A6;
+            --white: #FFFFFF;
+            --cream: #FFF9F0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFF 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Floating Elements */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .float-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: floatAround 20s infinite ease-in-out;
+            opacity: 0.2;
+        }
+
+        .float-icon:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .float-icon:nth-child(2) { left: 80%; top: 15%; animation-delay: 4s; }
+        .float-icon:nth-child(3) { left: 20%; top: 60%; animation-delay: 8s; }
+        .float-icon:nth-child(4) { left: 70%; top: 70%; animation-delay: 12s; }
+        .float-icon:nth-child(5) { left: 50%; top: 40%; animation-delay: 16s; }
+        .float-icon:nth-child(6) { left: 30%; top: 80%; animation-delay: 3s; }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, 20px) rotate(180deg); }
+            75% { transform: translate(20px, 30px) rotate(270deg); }
+        }
+
+        /* Stars Animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--crayon-blue) 0%, var(--sunshine-yellow) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero::before {
+            content: '🎨';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            font-size: 6rem;
+            opacity: 0.15;
+            animation: bounce 3s infinite;
+        }
+
+        .hero::after {
+            content: '🎤';
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            font-size: 6rem;
+            opacity: 0.15;
+            animation: bounce 3s infinite 1s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            animation: slideInDown 1s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 600;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 80px;
+            border: 5px dashed var(--crayon-blue);
+            line-height: 1.9;
+            font-size: 1.15rem;
+            animation: popIn 1s ease-out;
+            position: relative;
+        }
+
+        .about::before {
+            content: '📚';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 4rem;
+            opacity: 0.1;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Event Highlights */
+        .events {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .event-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--crayon-blue), var(--sunshine-yellow));
+        }
+
+        .event-card:nth-child(1)::before {
+            background: linear-gradient(90deg, var(--light-coral), var(--sunshine-yellow));
+        }
+
+        .event-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--crayon-blue), var(--chalkboard-green));
+        }
+
+        .event-card:nth-child(3)::before {
+            background: linear-gradient(90deg, var(--sunshine-yellow), var(--light-coral));
+        }
+
+        .event-card:hover {
+            transform: translateY(-15px) rotate(-2deg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .event-card .icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .event-card h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.8rem;
+            color: var(--crayon-blue);
+            margin-bottom: 15px;
+        }
+
+        .event-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            margin-bottom: 80px;
+        }
+
+        .carousel-section h2 {
+            font-family: 'Fredoka', cursive;
+            color: var(--chalkboard-green);
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .carousel-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--crayon-blue), var(--sunshine-yellow), var(--light-coral));
+            border-radius: 3px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 550px;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            border: 8px solid var(--sunshine-yellow);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.08);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--light-coral);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 5;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .carousel-nav:hover {
+            background: var(--crayon-blue);
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .carousel-nav.prev { left: 15px; }
+        .carousel-nav.next { right: 15px; }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+
+        .gallery-section h2 {
+            font-family: 'Fredoka', cursive;
+            color: var(--light-coral);
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .gallery-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--light-coral), var(--crayon-blue), var(--chalkboard-green));
+            border-radius: 3px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 4px solid transparent;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(122, 182, 248, 0.5);
+            border-color: var(--crayon-blue);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        /* Video Section */
+        .video-section {
+            margin-bottom: 80px;
+        }
+
+        .video-section h2 {
+            font-family: 'Fredoka', cursive;
+            color: var(--crayon-blue);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-caption {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+        }
+
+        .video-item {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+            background: white;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: scale(1.05);
+        }
+
+        .video-item video {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+        }
+
+        /* Closing Note */
+        .closing {
+            background: linear-gradient(135deg, var(--chalkboard-green), var(--crayon-blue));
+            color: white;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 1.4rem;
+            line-height: 1.9;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(122, 182, 248, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 3.5rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--sunshine-yellow);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--light-coral), var(--crayon-blue));
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 1rem;
+        }
+
+        footer h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: var(--sunshine-yellow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .carousel {
+                height: 400px;
+            }
+
+            .about, .closing {
+                padding: 30px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Icons -->
+    <div class="floating-icons">
+        <div class="float-icon">✏️</div>
+        <div class="float-icon">🎨</div>
+        <div class="float-icon">🎤</div>
+        <div class="float-icon">❓</div>
+        <div class="float-icon">📚</div>
+        <div class="float-icon">🎉</div>
+    </div>
+
+    <!-- Stars -->
+    <div class="stars">
+        <div class="star" style="left: 15%; top: 25%;">✨</div>
+        <div class="star" style="left: 85%; top: 35%;">✨</div>
+        <div class="star" style="left: 40%; top: 15%;">✨</div>
+        <div class="star" style="left: 65%; top: 55%;">✨</div>
+        <div class="star" style="left: 25%; top: 75%;">✨</div>
+        <div class="star" style="left: 75%; top: 85%;">✨</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Creative Minds in Action 🎨🎤🧠</h1>
+        <p>Celebrating imagination, expression, knowledge, and confidence.</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- About Section -->
+        <section class="about">
+            <p>At United Forum for Health & Environment, we believe that learning is not limited to textbooks. Our Drawing, Debate, and Quiz events are designed to encourage creative thinking, confident communication, and a spirit of healthy curiosity among students. These activities provided a platform for children to express their ideas, showcase their imagination, and strengthen their teamwork and leadership skills. Every student participated with enthusiasm — learning, growing, and shining in their own unique way.</p>
+        </section>
+
+        <!-- Event Highlights -->
+        <section class="events">
+            <div class="event-card">
+                <span class="icon">🎨</span>
+                <h3>Drawing Competition</h3>
+                <p>"Colors, imagination, and stories on paper."</p>
+            </div>
+            <div class="event-card">
+                <span class="icon">🎤</span>
+                <h3>Debate Competition</h3>
+                <p>"Confidence, voice, and the power of perspective."</p>
+            </div>
+            <div class="event-card">
+                <span class="icon">❓</span>
+                <h3>Quiz Challenge</h3>
+                <p>"Curiosity, teamwork, and active learning."</p>
+            </div>
+        </section>
+
+        <!-- Carousel Highlights -->
+        <section class="carousel-section">
+            <h2>🌟 Competition Highlights</h2>
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="images/Competitions/IMG-20251112-WA0039.jpg" alt="Competition 1"></div>
+                    <div class="carousel-slide"><img src="images/Competitions/IMG-20251112-WA0045.jpg" alt="Competition 2"></div>
+                    <div class="carousel-slide"><img src="images/Competitions/IMG-20251112-WA0050.jpg" alt="Competition 3"></div>
+                    <div class="carousel-slide"><img src="images/Competitions/IMG-20251112-WA0055.jpg" alt="Competition 4"></div>
+                    <div class="carousel-slide"><img src="images/Competitions/IMG-20251112-WA0060.jpg" alt="Competition 5"></div>
+                    <div class="carousel-slide"><img src="images/Competitions/IMG-20251112-WA0062.jpg" alt="Competition 6"></div>
+                </div>
+                <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="gallery-section">
+            <h2>📸 Gallery of Moments</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0039.jpg" alt="Moment 1"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0040.jpg" alt="Moment 2"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0041.jpg" alt="Moment 3"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0042.jpg" alt="Moment 4"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0043.jpg" alt="Moment 5"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0044.jpg" alt="Moment 6"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0045.jpg" alt="Moment 7"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0046.jpg" alt="Moment 8"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0047.jpg" alt="Moment 9"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0048.jpg" alt="Moment 10"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0049.jpg" alt="Moment 11"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0050.jpg" alt="Moment 12"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0051.jpg" alt="Moment 13"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0052.jpg" alt="Moment 14"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0053.jpg" alt="Moment 15"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0054.jpg" alt="Moment 16"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0055.jpg" alt="Moment 17"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0056.jpg" alt="Moment 18"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0057.jpg" alt="Moment 19"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0058.jpg" alt="Moment 20"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0059.jpg" alt="Moment 21"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0060.jpg" alt="Moment 22"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0061.jpg" alt="Moment 23"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/Competitions/IMG-20251112-WA0062.jpg" alt="Moment 24"></div>
+            </div>
+        </section>
+
+        <!-- Video Showcase -->
+        <section class="video-section">
+            <h2>🎥 Video Gallery</h2>
+            <p class="video-caption">Moments of Joy & Learning in Motion</p>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/Competitions/VID-20251112-WA0005.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/Competitions/VID-20251112-WA0006.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/Competitions/VID-20251112-WA0007.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/Competitions/VID-20251112-WA0008.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/Competitions/VID-20251112-WA0009.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Note -->
+        <section class="closing">
+            <p>We are proud of every student who participated with creativity, courage, and curiosity. These experiences inspire lifelong learning and confidence.</p>
+        </section>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Enlarged view">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>United Forum for Health & Environment</h3>
+        <p><strong>Registration No.:</strong> 968/99-2000</p>
+        <p>📍 <strong>Address:</strong> Vivekananda Humanity Centre, Zone No. 6, Birsanagar, Jamshedpur – 831004, East Singhbhum, Jharkhand</p>
+        <p>🏟️ <strong>Event Venue:</strong> Football Stadium, Sanchu Koya Sports Complex, Opposite Zone Number 6, Birsanagar – 831004</p>
+        <p>📞 <strong>Phone:</strong> <a href="tel:+919304288941">+91 93042 88941</a></p>
+        <p style="margin-top: 25px; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">Made with ❤️ by students of United Forum</p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">© 2025 United Forum for Health & Environment. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-slide every 4 seconds
+        setInterval(() => {
+            moveCarousel(1);
+        }, 4000);
+
+        // Lightbox functionality
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = img

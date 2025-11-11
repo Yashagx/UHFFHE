@@ -3,102 +3,467 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Annual Day 2025 Gallery</title>
+  <title>Annual Day 2025 Gallery - UFHE</title>
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #d1d0d0;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       padding: 2rem;
+      position: relative;
+      overflow-x: hidden;
     }
-    h1, h2 {
+
+    /* Animated Background Elements */
+    .bg-decoration {
+      position: fixed;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float-bg 20s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    .bg-circle1 {
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .bg-circle2 {
+      width: 200px;
+      height: 200px;
+      background: #ffd700;
+      top: 60%;
+      right: 10%;
+      animation-delay: 3s;
+    }
+
+    .bg-circle3 {
+      width: 250px;
+      height: 250px;
+      background: #ff69b4;
+      bottom: 15%;
+      left: 15%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float-bg {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, 30px) scale(1.1); }
+    }
+
+    /* Header */
+    .header {
       text-align: center;
-      color: #444;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 10;
+      animation: fadeInDown 1s ease;
     }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header .subtitle {
+      font-size: 1.4rem;
+      color: #ffd700;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header .date {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Section Styling */
     .section {
-      margin: 40px auto;
-      max-width: 1200px;
+      margin: 60px auto;
+      max-width: 1400px;
+      position: relative;
+      z-index: 10;
+      animation: fadeInUp 1s ease;
     }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+      padding: 25px 40px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .section h2 {
+      text-align: center;
+      color: #667eea;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gallery Grid */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
       margin-top: 20px;
     }
-    .gallery img,
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fff;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.15);
+    }
+
     .gallery video {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      height: 320px;
       object-fit: cover;
-    }
-    .gallery video {
       background: #000;
-      cursor: default;
+      cursor: pointer;
+      display: block;
+      border-radius: 15px;
     }
-    .gallery a img:hover {
-      transform: scale(1.03);
-      transition: transform 0.3s ease;
+
+    .gallery video:hover {
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
     }
+
+    /* Video Play Overlay */
+    .video-wrapper {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .video-wrapper::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: white;
+      background: rgba(102, 126, 234, 0.8);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .video-wrapper:hover::after {
+      background: rgba(102, 126, 234, 1);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Category Badge */
+    .gallery-item::before {
+      content: attr(data-category);
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-item:hover::before {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+      color: #667eea;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #764ba2;
+    }
+
+    .footer p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    /* Lightbox Customization */
+    .lb-data .lb-caption {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+      .header h1 { font-size: 2.5rem; }
+      .header .subtitle { font-size: 1.1rem; }
+      .section h2 { font-size: 1.8rem; }
+      .section-header { padding: 20px 25px; }
+      .gallery { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+      .gallery img, .gallery video { height: 280px; }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 { font-size: 2rem; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+
+    /* Loading Animation */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .gallery-item {
+      animation: fadeIn 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+    .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+    .gallery-item:nth-child(6) { animation-delay: 0.6s; }
   </style>
 </head>
 <body>
 
-  <h1>Annual Day 2025 – Gallery</h1>
+  <!-- Background Decorations -->
+  <div class="bg-decoration bg-circle1"></div>
+  <div class="bg-decoration bg-circle2"></div>
+  <div class="bg-decoration bg-circle3"></div>
 
-  <!-- DANCE -->
+  <!-- Header -->
+  <div class="header">
+    <h1>🎉 Annual Day 2025 🎉</h1>
+    <p class="subtitle">United Forum for Health & Environment</p>
+    <p class="date">A Celebration of Achievements & Talents</p>
+  </div>
+
+  <!-- DANCE PERFORMANCES -->
   <div class="section">
-    <h2>🎭 Dance Performances</h2>
+    <div class="section-header">
+      <h2>🎭 Dance Performances</h2>
+    </div>
     <div class="gallery">
-      <a href="images/annual day 2025/IMG-20250717-WA0043.jpg" data-lightbox="dance"><img src="images/annual day 2025/IMG-20250717-WA0043.jpg" alt="Dance 1"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0045.jpg" data-lightbox="dance"><img src="images/annual day 2025/IMG-20250717-WA0045.jpg" alt="Dance 2"></a>
-      <video src="images/annual day 2025/VID-20250717-WA0004.mp4" controls muted></video>
-      <video src="images/annual day 2025/VID-20250717-WA0006.mp4" controls muted></video>
+      <a href="images/annual day 2025/IMG-20250717-WA0043.jpg" data-lightbox="dance" data-title="Dance Performance - Moment 1" class="gallery-item" data-category="Dance">
+        <img src="images/annual day 2025/IMG-20250717-WA0043.jpg" alt="Dance Performance 1">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0045.jpg" data-lightbox="dance" data-title="Dance Performance - Moment 2" class="gallery-item" data-category="Dance">
+        <img src="images/annual day 2025/IMG-20250717-WA0045.jpg" alt="Dance Performance 2">
+      </a>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0004.mp4" controls muted></video>
+      </div>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0006.mp4" controls muted></video>
+      </div>
     </div>
   </div>
 
-  <!-- AWARDS -->
+  <!-- AWARDS & CERTIFICATES -->
   <div class="section">
-    <h2>🏆 Award Ceremony & Certificates</h2>
+    <div class="section-header">
+      <h2>🏆 Award Ceremony & Certificates</h2>
+    </div>
     <div class="gallery">
-      <a href="images/annual day 2025/IMG-20250717-WA0012.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0012.jpg" alt="Award 1"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0013.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0013.jpg" alt="Award 2"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0020.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0020.jpg" alt="Award 3"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0024.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0024.jpg" alt="Award 4"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0037.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0037.jpg" alt="Award 5"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0042.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0042.jpg" alt="Award 6"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0044.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0044.jpg" alt="Award 7"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0046.jpg" data-lightbox="awards"><img src="images/annual day 2025/IMG-20250717-WA0046.jpg" alt="Award 8"></a>
-      <video src="images/annual day 2025/VID-20250717-WA0001.mp4" controls muted></video>
-      <video src="images/annual day 2025/VID-20250717-WA0002.mp4" controls muted></video>
+      <a href="images/annual day 2025/IMG-20250717-WA0012.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 1" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0012.jpg" alt="Award 1">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0013.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 2" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0013.jpg" alt="Award 2">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0020.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 3" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0020.jpg" alt="Award 3">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0024.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 4" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0024.jpg" alt="Award 4">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0037.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 5" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0037.jpg" alt="Award 5">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0042.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 6" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0042.jpg" alt="Award 6">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0044.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 7" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0044.jpg" alt="Award 7">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0046.jpg" data-lightbox="awards" data-title="Award Ceremony - Moment 8" class="gallery-item" data-category="Awards">
+        <img src="images/annual day 2025/IMG-20250717-WA0046.jpg" alt="Award 8">
+      </a>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0001.mp4" controls muted></video>
+      </div>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0002.mp4" controls muted></video>
+      </div>
     </div>
   </div>
 
-  <!-- OTHER -->
+  <!-- OTHER MOMENTS & DECORATIONS -->
   <div class="section">
-    <h2>🎨 Other Moments & Decorations</h2>
+    <div class="section-header">
+      <h2>🎨 Other Moments & Decorations</h2>
+    </div>
     <div class="gallery">
-      <a href="images/annual day 2025/1.jpg" data-lightbox="others"><img src="images/annual day 2025/1.jpg" alt="Other 1"></a>
-      <a href="images/annual day 2025/2.jpg" data-lightbox="others"><img src="images/annual day 2025/2.jpg" alt="Other 2"></a>
-      <a href="images/annual day 2025/3.jpg" data-lightbox="others"><img src="images/annual day 2025/3.jpg" alt="Other 3"></a>
-      <a href="images/annual day 2025/4.jpg" data-lightbox="others"><img src="images/annual day 2025/4.jpg" alt="Other 4"></a>
-      <a href="images/annual day 2025/5.jpg" data-lightbox="others"><img src="images/annual day 2025/5.jpg" alt="Other 5"></a>
-      <a href="images/annual day 2025/6.jpg" data-lightbox="others"><img src="images/annual day 2025/6.jpg" alt="Other 6"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0050.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0050.jpg" alt="Other 7"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0051.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0051.jpg" alt="Other 8"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0055.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0055.jpg" alt="Other 9"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0056.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0056.jpg" alt="Other 10"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0059.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0059.jpg" alt="Other 11"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0060.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0060.jpg" alt="Other 12"></a>
-      <a href="images/annual day 2025/IMG-20250717-WA0062.jpg" data-lightbox="others"><img src="images/annual day 2025/IMG-20250717-WA0062.jpg" alt="Other 13"></a>
-      <video src="images/annual day 2025/VID-20250717-WA0003.mp4" controls muted></video>
-      <video src="images/annual day 2025/VID-20250717-WA0005.mp4" controls muted></video>
-      <video src="images/annual day 2025/VID-20250717-WA0007.mp4" controls muted></video>
+      <a href="images/annual day 2025/1.jpg" data-lightbox="others" data-title="Special Moment 1" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/1.jpg" alt="Other 1">
+      </a>
+      <a href="images/annual day 2025/2.jpg" data-lightbox="others" data-title="Special Moment 2" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/2.jpg" alt="Other 2">
+      </a>
+      <a href="images/annual day 2025/3.jpg" data-lightbox="others" data-title="Special Moment 3" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/3.jpg" alt="Other 3">
+      </a>
+      <a href="images/annual day 2025/4.jpg" data-lightbox="others" data-title="Special Moment 4" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/4.jpg" alt="Other 4">
+      </a>
+      <a href="images/annual day 2025/5.jpg" data-lightbox="others" data-title="Special Moment 5" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/5.jpg" alt="Other 5">
+      </a>
+      <a href="images/annual day 2025/6.jpg" data-lightbox="others" data-title="Special Moment 6" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/6.jpg" alt="Other 6">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0050.jpg" data-lightbox="others" data-title="Special Moment 7" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0050.jpg" alt="Other 7">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0051.jpg" data-lightbox="others" data-title="Special Moment 8" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0051.jpg" alt="Other 8">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0055.jpg" data-lightbox="others" data-title="Special Moment 9" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0055.jpg" alt="Other 9">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0056.jpg" data-lightbox="others" data-title="Special Moment 10" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0056.jpg" alt="Other 10">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0059.jpg" data-lightbox="others" data-title="Special Moment 11" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0059.jpg" alt="Other 11">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0060.jpg" data-lightbox="others" data-title="Special Moment 12" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0060.jpg" alt="Other 12">
+      </a>
+      <a href="images/annual day 2025/IMG-20250717-WA0062.jpg" data-lightbox="others" data-title="Special Moment 13" class="gallery-item" data-category="Moments">
+        <img src="images/annual day 2025/IMG-20250717-WA0062.jpg" alt="Other 13">
+      </a>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0003.mp4" controls muted></video>
+      </div>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0005.mp4" controls muted></video>
+      </div>
+      <div class="gallery-item video-wrapper" data-category="Video">
+        <video src="images/annual day 2025/VID-20250717-WA0007.mp4" controls muted></video>
+      </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <h3>United Forum for Health & Environment (UFHE)</h3>
+    <p>Celebrating excellence, nurturing talents, building community</p>
+    <p>Chairperson: Mrs. Meena Mukherjee</p>
+    <p>© 2025 UFHE. All rights reserved.</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  <script>
+    // Lightbox configuration
+    lightbox.option({
+      'resizeDuration': 300,
+      'wrapAround': true,
+      'albumLabel': 'Image %1 of %2',
+      'fadeDuration': 300,
+      'imageFadeDuration': 300
+    });
+  </script>
 </body>
 </html>

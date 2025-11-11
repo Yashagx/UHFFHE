@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Kia! 🎂 - UFHE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF4C2 25%, #B6E3FF 75%, #C0FFC7 100%);
+            min-height: 100vh;
+        }
+
+        /* Floating Balloons Animation */
+        .balloon {
+            position: fixed;
+            width: 50px;
+            height: 70px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.5);
+            bottom: -80px;
+            left: 50%;
+        }
+
+        .balloon1 { background: #FFB6C1; left: 10%; animation-delay: 0s; }
+        .balloon2 { background: #B6E3FF; left: 30%; animation-delay: 1s; }
+        .balloon3 { background: #FFF4C2; left: 50%; animation-delay: 2s; }
+        .balloon4 { background: #C0FFC7; left: 70%; animation-delay: 1.5s; }
+        .balloon5 { background: #FFD4E5; left: 90%; animation-delay: 0.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #FFB6C1;
+            animation: confettiFall 4s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 80px 20px 60px;
+            z-index: 10;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .rainbow {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 150px;
+            border-radius: 150px 150px 0 0;
+            border: 15px solid transparent;
+            border-top-color: rgba(255, 182, 193, 0.5);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: #FF1493;
+            text-shadow: 3px 3px 0 #FFF4C2, 6px 6px 0 #B6E3FF;
+            margin-bottom: 20px;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #FF69B4;
+            font-weight: 600;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Decorative Elements */
+        .cloud {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.6;
+            animation: drift 15s ease-in-out infinite;
+        }
+
+        .cloud1 { top: 100px; left: 5%; animation-delay: 0s; }
+        .cloud2 { top: 150px; right: 10%; animation-delay: 3s; }
+        .cloud3 { top: 400px; left: 15%; animation-delay: 6s; }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .carousel-container {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container::before {
+            content: '🎉';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2rem;
+            animation: spin 3s linear infinite;
+        }
+
+        .carousel-container::after {
+            content: '🎈';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            animation: spin 3s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 3px solid #FF69B4;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: #FF69B4;
+            transform: scale(1.3);
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(182, 227, 255, 0.4);
+            position: relative;
+            z-index: 10;
+            animation: slideUp 1s ease-in;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about-section h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            color: #FF1493;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .about-section h2::before {
+            content: '🌈';
+            position: absolute;
+            left: -50px;
+            font-size: 2rem;
+        }
+
+        .about-section h2::after {
+            content: '✨';
+            position: absolute;
+            right: -50px;
+            font-size: 2rem;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #555;
+            text-align: justify;
+        }
+
+        .decorative-stickers {
+            position: absolute;
+            font-size: 2rem;
+        }
+
+        .sticker1 { top: -20px; right: 50px; }
+        .sticker2 { bottom: -20px; left: 50px; }
+        .sticker3 { top: 50%; right: -30px; }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #FF69B4, #B6E3FF);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            font-size: 1.1rem;
+        }
+
+        .footer h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .carousel { height: 350px; }
+            .about-section { padding: 30px 20px; }
+            .about-section h2::before,
+            .about-section h2::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Balloons -->
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+    <div class="balloon balloon4"></div>
+    <div class="balloon balloon5"></div>
+
+    <!-- Confetti -->
+    <script>
+        for (let i = 0; i < 30; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 4 + 's';
+            confetti.style.background = ['#FFB6C1', '#FFF4C2', '#B6E3FF', '#C0FFC7', '#FFD4E5'][Math.floor(Math.random() * 5)];
+            document.body.appendChild(confetti);
+        }
+    </script>
+
+    <!-- Clouds -->
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="rainbow"></div>
+        <h1>Happy Birthday Kia! 🎂🌈</h1>
+        <p>A day filled with joy, laughter, and love — celebrated together at UFHE.</p>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-slide active">
+                    <img src="images/KiaBirthday/IMG-20251112-WA0063.jpg" alt="Kia's Birthday Celebration 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/KiaBirthday/IMG-20251112-WA0064.jpg" alt="Kia's Birthday Celebration 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/KiaBirthday/IMG-20251112-WA0065.jpg" alt="Kia's Birthday Celebration 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/KiaBirthday/IMG-20251112-WA0066.jpg" alt="Kia's Birthday Celebration 4">
+                </div>
+                <div class="carousel-controls">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                    <span class="carousel-dot" data-slide="3"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <span class="decorative-stickers sticker1">🧁</span>
+        <span class="decorative-stickers sticker2">⭐</span>
+        <span class="decorative-stickers sticker3">🎈</span>
+        
+        <h2>Celebrating Together 💗</h2>
+        <p>
+            At United Forum for Health & Environment, we believe that every moment of happiness shared together strengthens our bond as a community. On this special day, we celebrated the birthday of little Kia — the beloved granddaughter of Friend of our Chairperson, Mrs. Meena Mukherjee. The children at our learning center joined in with handmade cards, songs, and laughter. The room was full of colors, smiles, and heartfelt blessings. Through simple joys like these, we nurture warmth, togetherness, and the spirit of family that lies at the heart of UFHE.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>United Forum for Health & Environment (UFHE)</h3>
+        <p>Building communities through love, care, and togetherness 💚</p>
+        <p>© 2025 UFHE. All rights reserved.</p>
+    </footer>
+
+    <!-- Carousel Script -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto advance
+        setInterval(nextSlide, 4000);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+    </script>
+</body>
+</html>

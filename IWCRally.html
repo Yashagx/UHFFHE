@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner Wheel Club Environmental Rally - UFHE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --earth-green: #4CAF50;
+            --leaf-mint: #C8F7C5;
+            --sky-blue: #A9D4FF;
+            --neutral-white: #FFFFFF;
+            --dark-text: #2C3E50;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--leaf-mint) 0%, var(--neutral-white) 100%);
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        /* Floating Leaves Animation */
+        .leaf-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 15s infinite ease-in-out;
+            opacity: 0.3;
+        }
+
+        .leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .leaf:nth-child(2) { left: 30%; animation-delay: 3s; }
+        .leaf:nth-child(3) { left: 50%; animation-delay: 6s; }
+        .leaf:nth-child(4) { left: 70%; animation-delay: 9s; }
+        .leaf:nth-child(5) { left: 90%; animation-delay: 12s; }
+
+        @keyframes float {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            50% { transform: translateY(50vh) rotate(180deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--earth-green) 100%);
+            padding: 100px 20px 80px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero::before {
+            content: '🌍';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            font-size: 8rem;
+            opacity: 0.15;
+            animation: rotateGlobe 20s linear infinite;
+        }
+
+        @keyframes rotateGlobe {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 500;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Introduction Section */
+        .intro {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(76, 175, 80, 0.2);
+            margin-bottom: 60px;
+            border-left: 8px solid var(--earth-green);
+            line-height: 1.9;
+            font-size: 1.15rem;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+        }
+
+        .intro::after {
+            content: '♻️';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 4rem;
+            opacity: 0.1;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            margin-bottom: 80px;
+        }
+
+        .carousel-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--earth-green);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .carousel-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--earth-green), var(--sky-blue));
+            border-radius: 2px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 550px;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .carousel-nav:hover {
+            background: var(--earth-green);
+            transform: translateY(-50%) scale(1.15);
+        }
+
+        .carousel-nav.prev { left: 15px; }
+        .carousel-nav.next { right: 15px; }
+
+        /* Impact Section */
+        .impact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border-top: 5px solid var(--earth-green);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(76, 175, 80, 0.3);
+        }
+
+        .impact-card .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .impact-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: var(--earth-green);
+            margin-bottom: 15px;
+        }
+
+        .impact-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+
+        .gallery-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--earth-green);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .gallery-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--earth-green), var(--sky-blue));
+            border-radius: 2px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        /* Video Section */
+        .video-section {
+            margin-bottom: 80px;
+        }
+
+        .video-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--earth-green);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-caption {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .video-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: white;
+            padding: 15px;
+        }
+
+        .video-item video {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        /* Closing Note */
+        .closing {
+            background: linear-gradient(135deg, var(--earth-green), var(--sky-blue));
+            color: white;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 1.3rem;
+            line-height: 1.9;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 60px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(76, 175, 80, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--earth-green);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--earth-green), #388E3C);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 1rem;
+        }
+
+        footer h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: var(--leaf-mint);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Scroll Animations */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .carousel {
+                height: 400px;
+            }
+
+            .intro, .closing {
+                padding: 30px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-section h2, .gallery-section h2, .video-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Leaves -->
+    <div class="leaf-container">
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍃</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Inner Wheel Club Environmental Rally</h1>
+        <p>UFHE Students Join Hands for a Plastic-Free Future 🌍</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Introduction -->
+        <section class="intro fade-in-scroll">
+            <p>The United Forum for Health & Environment is proud to have our students take part in the environmental awareness rally organized by the Inner Wheel Club of Jamshedpur East. Led by chairperson Mrs. Meena Mukherjee, the rally focused on reducing plastic usage, promoting cleanliness, and inspiring communities to protect the environment. The participation allowed the children to learn the importance of responsibility, teamwork, and sustainable living — not just in words, but through real action on the ground.</p>
+        </section>
+
+        <!-- Carousel Highlights -->
+        <section class="carousel-section fade-in-scroll">
+            <h2>🌟 Rally Highlights</h2>
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="images/IWCRally/IMG-20251112-WA0020.jpg" alt="Rally Moment 1"></div>
+                    <div class="carousel-slide"><img src="images/IWCRally/IMG-20251112-WA0025.jpg" alt="Rally Moment 2"></div>
+                    <div class="carousel-slide"><img src="images/IWCRally/IMG-20251112-WA0030.jpg" alt="Rally Moment 3"></div>
+                    <div class="carousel-slide"><img src="images/IWCRally/IMG-20251112-WA0033.jpg" alt="Rally Moment 4"></div>
+                    <div class="carousel-slide"><img src="images/IWCRally/IMG-20251112-WA0036.jpg" alt="Rally Moment 5"></div>
+                    <div class="carousel-slide"><img src="images/IWCRally/IMG-20251112-WA0038.jpg" alt="Rally Moment 6"></div>
+                </div>
+                <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </section>
+
+        <!-- Impact Cards -->
+        <section class="impact fade-in-scroll">
+            <div class="impact-card">
+                <span class="icon">♻️</span>
+                <h3>Plastic Removal Activity</h3>
+                <p>Students actively participated in collecting and removing plastic waste from the community, making a tangible difference in local cleanliness.</p>
+            </div>
+            <div class="impact-card">
+                <span class="icon">🌿</span>
+                <h3>Environmental Awareness March</h3>
+                <p>The rally raised awareness about sustainable practices, inspiring residents to adopt eco-friendly habits in their daily lives.</p>
+            </div>
+            <div class="impact-card">
+                <span class="icon">🧒</span>
+                <h3>Youth Participation</h3>
+                <p>Young changemakers demonstrated that age is no barrier to environmental leadership and community service.</p>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="gallery-section fade-in-scroll">
+            <h2>📸 Moments That Matter</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0020.jpg" alt="Rally 1"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0021.jpg" alt="Rally 2"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0022.jpg" alt="Rally 3"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0023.jpg" alt="Rally 4"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0024.jpg" alt="Rally 5"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0025.jpg" alt="Rally 6"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0026.jpg" alt="Rally 7"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0027.jpg" alt="Rally 8"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0028.jpg" alt="Rally 9"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0029.jpg" alt="Rally 10"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0030.jpg" alt="Rally 11"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0031.jpg" alt="Rally 12"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0032.jpg" alt="Rally 13"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0033.jpg" alt="Rally 14"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0034.jpg" alt="Rally 15"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0035.jpg" alt="Rally 16"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0036.jpg" alt="Rally 17"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0037.jpg" alt="Rally 18"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/IWCRally/IMG-20251112-WA0038.jpg" alt="Rally 19"></div>
+            </div>
+        </section>
+
+        <!-- Video Showcase -->
+        <section class="video-section fade-in-scroll">
+            <h2>🎥 Video Gallery</h2>
+            <p class="video-caption">Moments of Purpose in Motion</p>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/IWCRally/VID-20251112-WA0001.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/IWCRally/VID-20251112-WA0002.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/IWCRally/VID-20251112-WA0003.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="images/IWCRally/VID-20251112-WA0004.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Note -->
+        <section class="closing fade-in-scroll">
+            <p>At UFHE, we believe that awareness begins with action. Our students are not only learning — they are leading by example and contributing to the future of our planet.</p>
+        </section>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Enlarged view">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>United Forum for Health & Environment</h3>
+        <p><strong>Registration No.:</strong> 968/99-2000</p>
+        <p>📍 <strong>Address:</strong> Vivekananda Humanity Centre, Zone No. 6, Birsanagar, Jamshedpur – 831004, East Singhbhum, Jharkhand</p>
+        <p>🏟️ <strong>Event Venue:</strong> Football Stadium, Sanchu Koya Sports Complex, Opposite Zone Number 6, Birsanagar – 831004</p>
+        <p>📞 <strong>Phone:</strong> <a href="tel:+919304288941">+91 93042 88941</a></p>
+        <p style="margin-top: 25px; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">Made with ❤️ by students of United Forum</p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">© 2025 United Forum for Health & Environment. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-slide every 4 seconds
+        setInterval(() => {
+            moveCarousel(1);
+        }, 4000);
+
+        // Lightbox functionality
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.getElementById('lightboxImg').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Scroll-based fade-in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

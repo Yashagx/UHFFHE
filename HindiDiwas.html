@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हिंदी दिवस उत्सव 2025 - UFHE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Hind:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --saffron: #FF9933;
+            --warm-yellow: #FFE9A9;
+            --mehndi-green: #9BCF75;
+            --brick-red: #C95F4A;
+            --white: #FFFFFF;
+            --cream: #FFF8E7;
+        }
+
+        body {
+            font-family: 'Hind', sans-serif;
+            background-color: var(--cream);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Decorative Bunting */
+        .bunting {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--saffron) 0px,
+                var(--saffron) 40px,
+                var(--white) 40px,
+                var(--white) 50px,
+                var(--mehndi-green) 50px,
+                var(--mehndi-green) 90px,
+                var(--white) 90px,
+                var(--white) 100px
+            );
+            clip-path: polygon(0 0, 100% 0, 100% 40%, 95% 60%, 90% 40%, 85% 60%, 80% 40%, 75% 60%, 70% 40%, 65% 60%, 60% 40%, 55% 60%, 50% 40%, 45% 60%, 40% 40%, 35% 60%, 30% 40%, 25% 60%, 20% 40%, 15% 60%, 10% 40%, 5% 60%, 0 40%);
+            z-index: 10;
+            animation: buntingFade 1s ease-in;
+        }
+
+        @keyframes buntingFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--warm-yellow) 0%, var(--cream) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--saffron) 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            animation: rangoliSpin 30s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--mehndi-green) 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            animation: rangoliSpin 25s linear infinite reverse;
+        }
+
+        @keyframes rangoliSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Kalam', cursive;
+            font-size: 3.5rem;
+            color: var(--brick-red);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: typewriter 2s steps(20) 0.5s forwards;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--brick-red);
+            margin: 0 auto 20px;
+            width: fit-content;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; border-right: none; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #555;
+            font-style: italic;
+            animation: fadeInUp 1.5s ease-out 2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Quote Band */
+        .quote-band {
+            background: linear-gradient(90deg, var(--saffron), var(--brick-red));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Carousel */
+        .carousel-section {
+            margin-bottom: 60px;
+        }
+
+        .carousel-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--brick-red);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid var(--saffron);
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 5px solid var(--saffron);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 153, 51, 0.8);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .carousel-nav:hover {
+            background: var(--brick-red);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev { left: 10px; }
+        .carousel-nav.next { right: 10px; }
+
+        /* Event Description */
+        .event-description {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+            border-left: 8px solid var(--mehndi-green);
+            animation: fadeIn 1.5s ease-out;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Activity Highlights */
+        .activities {
+            background: linear-gradient(135deg, var(--warm-yellow) 0%, white 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .activities h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--brick-red);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .activities ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .activities li {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--saffron);
+        }
+
+        .activities li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Gallery Grid */
+        .gallery-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--brick-red);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: popIn 0.6s ease-out both;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 153, 51, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(255, 153, 51, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--saffron);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--brick-red), var(--saffron));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1rem;
+        }
+
+        footer h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: var(--warm-yellow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+                white-space: normal;
+                border-right: none;
+                animation: fadeInUp 1.5s ease-out;
+            }
+
+            .quote-band {
+                font-size: 1.3rem;
+            }
+
+            .carousel {
+                height: 350px;
+            }
+
+            .event-description, .activities {
+                padding: 30px;
+            }
+
+            .activities ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bunting"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>हिंदी दिवस उत्सव 2025</h1>
+        <p>Celebrating our national language and cultural heritage.</p>
+    </section>
+
+    <!-- Quote Band -->
+    <div class="quote-band">
+        "हिंदी सिर्फ भाषा नहीं, हमारी पहचान है।"
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Carousel Section -->
+        <section class="carousel-section">
+            <h2>✨ Highlight Moments</h2>
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="images/HindiDiwas/IMG-20251112-WA0001.jpg" alt="Hindi Diwas Celebration"></div>
+                    <div class="carousel-slide"><img src="images/HindiDiwas/IMG-20251112-WA0005.jpg" alt="Students Participating"></div>
+                    <div class="carousel-slide"><img src="images/HindiDiwas/IMG-20251112-WA0010.jpg" alt="Poetry Recitation"></div>
+                    <div class="carousel-slide"><img src="images/HindiDiwas/IMG-20251112-WA0012.jpg" alt="Cultural Activities"></div>
+                    <div class="carousel-slide"><img src="images/HindiDiwas/IMG-20251112-WA0015.jpg" alt="Group Activities"></div>
+                    <div class="carousel-slide"><img src="images/HindiDiwas/IMG-20251112-WA0019.jpg" alt="Celebration Moments"></div>
+                </div>
+                <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </section>
+
+        <!-- Event Description -->
+        <section class="event-description">
+            <p>On the occasion of Hindi Diwas, the students and volunteers of United Forum for Health & Environment came together to celebrate the beauty and cultural significance of our national language. Through poetry recitations, storytelling sessions, handwriting art, and group activities, the children expressed their creativity with pride and joy. Hindi is not just a medium of communication for us — it is a bridge to our heritage, values, and collective identity. The celebration encouraged confidence, unity, and love for our linguistic roots, inspiring young minds to honor and cherish the richness of the Hindi language.</p>
+        </section>
+
+        <!-- Activity Highlights -->
+        <section class="activities">
+            <h2>🎉 Activity Highlights</h2>
+            <ul>
+                <li>✍️ <strong>Sulekhan Competition</strong><br>Beautiful handwriting art showcasing the elegance of Devanagari script</li>
+                <li>🎤 <strong>Kavita Paath</strong><br>Poetry recitation bringing Hindi literature to life with emotion and expression</li>
+                <li>🎭 <strong>Storytelling & Roleplay</strong><br>Interactive sessions where children enacted stories from Indian culture</li>
+                <li>🎶 <strong>Group Song on Hindi Bhasha</strong><br>Melodious celebration of our national language through music</li>
+            </ul>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="gallery-section">
+            <h2>📸 Photo Gallery</h2>
+            <div class="gallery" id="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0001.jpg" alt="Hindi Diwas"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0002.jpg" alt="Students"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0003.jpg" alt="Activities"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0004.jpg" alt="Celebration"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0005.jpg" alt="Participants"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0006.jpg" alt="Event"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0007.jpg" alt="Children"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0008.jpg" alt="Heritage"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0009.jpg" alt="Culture"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0010.jpg" alt="Poetry"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0011.jpg" alt="Art"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0012.jpg" alt="Performance"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0013.jpg" alt="Joy"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0014.jpg" alt="Unity"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0015.jpg" alt="Together"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0016.jpg" alt="Pride"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0017.jpg" alt="Learning"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0018.jpg" alt="Expression"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="images/HindiDiwas/IMG-20251112-WA0019.jpg" alt="Moments"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Enlarged view">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>United Forum for Health & Environment</h3>
+        <p><strong>Registration No.:</strong> 968/99-2000</p>
+        <p>📍 <strong>Address:</strong> Vivekananda Humanity Centre, Zone No. 6, Birsanagar, Jamshedpur – 831004, East Singhbhum, Jharkhand</p>
+        <p>🏟️ <strong>Event Venue:</strong> Football Stadium, Sanchu Koya Sports Complex, Opposite Zone Number 6, Birsanagar – 831004</p>
+        <p>📞 <strong>Phone:</strong> <a href="tel:+919304288941">+91 93042 88941</a></p>
+        <p style="margin-top: 25px; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">Made with ❤️ by students of United Forum</p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">© 2025 United Forum for Health & Environment. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-slide every 4 seconds
+        setInterval(() => {
+            moveCarousel(1);
+        }, 4000);
+
+        // Lightbox functionality
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Prevent lightbox close when clicking on image
+        document.getElementById('lightboxImg').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
